@@ -31,29 +31,29 @@ public class ComparableWrappersSuite {
    String[] s1 = new String[] { "1", "2", "3" };
    String[] s2 = new String[] { "1", "2" };
 
-   assertEquals(ComparableWrappers.forArray(b1), ComparableWrappers.forArray(b1));
-   assertNotEquals(ComparableWrappers.forArray(b1), ComparableWrappers.forArray(b2));
-   assertNotEquals(ComparableWrappers.forArray(b1), ComparableWrappers.forArray(i1));
-   assertNotEquals(ComparableWrappers.forArray(b1), ComparableWrappers.forArray(s1));
+   assertEquals(ComparableWrappers.forInput(b1), ComparableWrappers.forInput(b1));
+   assertNotEquals(ComparableWrappers.forInput(b1), ComparableWrappers.forInput(b2));
+   assertNotEquals(ComparableWrappers.forInput(b1), ComparableWrappers.forInput(i1));
+   assertNotEquals(ComparableWrappers.forInput(b1), ComparableWrappers.forInput(s1));
 
-   assertEquals(ComparableWrappers.forArray(i1), ComparableWrappers.forArray(i1));
-   assertNotEquals(ComparableWrappers.forArray(i1), ComparableWrappers.forArray(i2));
-   assertNotEquals(ComparableWrappers.forArray(i1), ComparableWrappers.forArray(b1));
-   assertNotEquals(ComparableWrappers.forArray(i1), ComparableWrappers.forArray(s1));
+   assertEquals(ComparableWrappers.forInput(i1), ComparableWrappers.forInput(i1));
+   assertNotEquals(ComparableWrappers.forInput(i1), ComparableWrappers.forInput(i2));
+   assertNotEquals(ComparableWrappers.forInput(i1), ComparableWrappers.forInput(b1));
+   assertNotEquals(ComparableWrappers.forInput(i1), ComparableWrappers.forInput(s1));
 
-   assertEquals(ComparableWrappers.forArray(s1), ComparableWrappers.forArray(s1));
-   assertNotEquals(ComparableWrappers.forArray(s1), ComparableWrappers.forArray(s2));
-   assertNotEquals(ComparableWrappers.forArray(s1), ComparableWrappers.forArray(b1));
-   assertNotEquals(ComparableWrappers.forArray(s1), ComparableWrappers.forArray(i1));
+   assertEquals(ComparableWrappers.forInput(s1), ComparableWrappers.forInput(s1));
+   assertNotEquals(ComparableWrappers.forInput(s1), ComparableWrappers.forInput(s2));
+   assertNotEquals(ComparableWrappers.forInput(s1), ComparableWrappers.forInput(b1));
+   assertNotEquals(ComparableWrappers.forInput(s1), ComparableWrappers.forInput(i1));
 
-   assertEquals(0, ComparableWrappers.forArray(b1).compareTo(ComparableWrappers.forArray(b1)));
-   assertTrue(ComparableWrappers.forArray(b1).compareTo(ComparableWrappers.forArray(b2)) > 0);
+   assertEquals(0, ComparableWrappers.forInput(b1).compareTo(ComparableWrappers.forInput(b1)));
+   assertTrue(ComparableWrappers.forInput(b1).compareTo(ComparableWrappers.forInput(b2)) > 0);
 
-   assertEquals(0, ComparableWrappers.forArray(i1).compareTo(ComparableWrappers.forArray(i1)));
-   assertTrue(ComparableWrappers.forArray(i1).compareTo(ComparableWrappers.forArray(i2)) > 0);
+   assertEquals(0, ComparableWrappers.forInput(i1).compareTo(ComparableWrappers.forInput(i1)));
+   assertTrue(ComparableWrappers.forInput(i1).compareTo(ComparableWrappers.forInput(i2)) > 0);
 
-   assertEquals(0, ComparableWrappers.forArray(s1).compareTo(ComparableWrappers.forArray(s1)));
-   assertTrue(ComparableWrappers.forArray(s1).compareTo(ComparableWrappers.forArray(s2)) > 0);
+   assertEquals(0, ComparableWrappers.forInput(s1).compareTo(ComparableWrappers.forInput(s1)));
+   assertTrue(ComparableWrappers.forInput(s1).compareTo(ComparableWrappers.forInput(s2)) > 0);
   }
 
 }

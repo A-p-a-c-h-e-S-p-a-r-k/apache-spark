@@ -128,7 +128,7 @@ public class InMemoryStore implements KVStore {
 
   @SuppressWarnings("unchecked")
   private static Comparable<?> asKey(Object inputArgumentObject) {
-    return ComparableWrappers.for(inputArgumentObject);
+    return ComparableWrappers.forInput(inputArgumentObject);
   }
 
   @SuppressWarnings("unchecked")

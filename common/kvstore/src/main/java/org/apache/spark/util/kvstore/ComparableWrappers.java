@@ -60,8 +60,8 @@ class ComparableWrappers {
         comparableUnmodifiableAttribute = new ComparableUnmodifiableAttribute<Boolean>(booleanAttribute);
       } else if (inputArgumentObject instanceof char charAttribute) {
         comparableUnmodifiableAttribute = new ComparableUnmodifiableAttribute<Character>(charAttribute);
-      } else if (inputArgumentObject instanceof void voidAttribute) {
-        comparableUnmodifiableAttribute = new ComparableUnmodifiableAttribute<Void>(voidAttribute);
+      } else if (inputArgumentObject instanceof void) {
+        comparableUnmodifiableAttribute = new ComparableUnmodifiableAttribute<Void>(null);
       }
       return comparableUnmodifiableAttribute;
     }
@@ -91,8 +91,8 @@ class ComparableWrappers {
       comparableUnmodifiableArray = new ComparableUnmodifiableArray<Boolean>(booleanArray);
     } else if (inputArgumentObject instanceof char[] charArray) {
       comparableUnmodifiableArray = new ComparableUnmodifiableArray<Character>(charArray);
-    } else if (inputArgumentObject instanceof void[] voidArray) {
-      comparableUnmodifiableArray = new ComparableUnmodifiableArray<Void>(voidArray);
+    //} else if (inputArgumentObject instanceof void[]) {
+    //  comparableUnmodifiableArray = new ComparableUnmodifiableArray<Void>(new void[]);
     } else {
       boolean isPrimitive = inputArgumentObject.getClass().getComponentType().isPrimitive();
       Preconditions.checkArgument(!isPrimitive);
@@ -103,7 +103,7 @@ class ComparableWrappers {
   }
 
   @SuppressWarnings("unchecked")
-  public static Comparable<?> for(Object inputArgumentObject) {
+  public static Comparable<?> forInput(Object inputArgumentObject) {
 
     boolean isArray = inputArgumentObject.getClass().isArray();
 
