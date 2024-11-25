@@ -127,11 +127,8 @@ public class InMemoryStore implements KVStore {
   }
 
   @SuppressWarnings("unchecked")
-  private static Comparable<Object> asKey(Object in) {
-    if (in.getClass().isArray()) {
-      in = ArrayWrappers.forArray(in);
-    }
-    return (Comparable<Object>) in;
+  private static Comparable<?> asKey(Object inputArgumentObject) {
+    return ComparableWrappers.for(inputArgumentObject);
   }
 
   @SuppressWarnings("unchecked")
@@ -241,7 +238,7 @@ public class InMemoryStore implements KVStore {
         // Spark can use the `parentToChildrenMap` to get the related natural keys, and then
         // delete them from `data`.
         for (Object indexValue : indexValues) {
-          Comparable<Object> parentKey = asKey(indexValue);
+          Comparable<?> parentKey = asKey(indexValue);
           NaturalKeys children = parentToChildrenMap.getOrDefault(parentKey, new NaturalKeys());
           for (Comparable<Object> naturalKey : children.keySet()) {
             data.remove(naturalKey);
@@ -268,7 +265,7 @@ public class InMemoryStore implements KVStore {
     public void put(T value) throws Exception {
       data.put(asKey(naturalKey.get(value)), value);
       if (hasNaturalParentIndex) {
-        Comparable<Object> parentKey = asKey(getIndexAccessor(naturalParentIndexName).get(value));
+        Comparable<?> parentKey = asKey(getIndexAccessor(naturalParentIndexName).get(value));
         NaturalKeys children =
           parentToChildrenMap.computeIfAbsent(parentKey, k -> new NaturalKeys());
         children.put(asKey(naturalKey.get(value)), true);
@@ -401,7 +398,7 @@ public class InMemoryStore implements KVStore {
      */
     private List<T> copyElements() {
       if (parent != null) {
-        Comparable<Object> parentKey = asKey(parent);
+        Comparable<?> parentKey = asKey(parent);
         if (hasNaturalParentIndex && naturalParentIndexName.equals(ti.getParentIndexName(index))) {
           // If there is a parent index for the natural index and the parent of `index` happens to
           // be it, Spark can use the `parentToChildrenMap` to get the related natural keys, and
