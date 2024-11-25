@@ -7,7 +7,7 @@ public class ComparableUnmodifiableAttribute<T> implements Comparable<Comparable
   }
 
   public Class<T> getType() {
-    return attribute.class;
+    return attribute.getClass();
   }
 
   public T getAttribute() {
