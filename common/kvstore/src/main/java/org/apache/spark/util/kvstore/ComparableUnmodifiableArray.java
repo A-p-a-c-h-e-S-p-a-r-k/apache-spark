@@ -7,7 +7,7 @@ public class ComparableUnmodifiableArray<T> implements Comparable<ComparableUnmo
   }
 
   public Class<T> getType() {
-    return T.class;
+    return array.getClass();
   }
 
   public T[] getArray() {
